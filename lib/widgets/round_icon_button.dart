@@ -24,11 +24,12 @@ class RoundedIconButoon extends StatelessWidget {
         ),
       ),
       child: IconButton(
-          onPressed: onPressedValue,
-          icon: FaIcon(
-            iconType,
-            color: iconColorVal,
-          )),
+        onPressed: onPressedValue,
+        icon: FaIcon(
+          iconType,
+          color: iconColorVal,
+        ),
+      ),
     );
   }
 }

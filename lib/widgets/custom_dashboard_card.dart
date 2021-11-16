@@ -26,7 +26,7 @@ class CustomDashBoardCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Card(
@@ -42,17 +42,17 @@ class CustomDashBoardCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               cardText,
-              style: TextStyle(
+              style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   fontSize: 15),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(cardSubText),

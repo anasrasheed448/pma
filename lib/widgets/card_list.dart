@@ -27,7 +27,7 @@ class CardList extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      height: MediaQuery.of(context).size.height * 0.25,
+      // height: MediaQuery.of(context).size.height * 0.25,
       child: Column(
         children: [
           SizedBox(
@@ -38,35 +38,51 @@ class CardList extends StatelessWidget {
               horizontal: MediaQuery.of(context).size.width * 0.05,
             ),
             alignment: Alignment.centerLeft,
-            child: Text(
-              workType,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.orange,
-              ),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  workType,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.orange,
+                  ),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 20,
+                  color: Colors.grey,
+                )
+              ],
             ),
           ),
           const Divider(),
           Card(
-            elevation: 0.0,
-            color: Colors.grey.shade100,
-            child: ListTile(
-              horizontalTitleGap: 0,
-              minLeadingWidth: MediaQuery.of(context).size.width * 0.05,
-              leading: Container(
+              elevation: 0.0,
+              color: Colors.grey.shade100,
+              child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.orange,
+                  border:
+                      Border(left: BorderSide(color: Colors.orange, width: 3)),
                 ),
-                height: MediaQuery.of(context).size.height * 0.06,
-                width: MediaQuery.of(context).size.width * 0.008,
-              ),
-              title: Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: Text(titleText),
-              ),
-              subtitle: Text(subtitleText),
-            ),
-          ),
+                child: ListTile(
+                  horizontalTitleGap: 0,
+                  minLeadingWidth: MediaQuery.of(context).size.width * 0.05,
+                  // leading: Container(
+                  //   decoration: const BoxDecoration(
+                  //     color: Colors.orange,
+                  //   ),
+                  //   height: MediaQuery.of(context).size.height * 0.06,
+                  //   width: MediaQuery.of(context).size.width * 0.008,
+                  // ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: Text(titleText),
+                  ),
+                  subtitle: Text(subtitleText),
+                ),
+              )),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
           ),
@@ -106,6 +122,7 @@ class CardList extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 10),
         ],
       ),
     );

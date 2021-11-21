@@ -12,8 +12,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const DashBoardScreen(),
-    const Text('hello'),
-    const DetailScreen(),
+    // const Text('hello'),
+    // const DetailScreen(),
+    const DashBoardScreen(),
   ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -49,14 +50,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 color: Colors.white,
               ),
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(
-                Icons.add_circle_rounded,
-                size: _height * 0.06,
-                color: Colors.orange,
-              ),
-            ),
+            // BottomNavigationBarItem(
+            //   label: '',
+            //   icon: Icon(
+            //     Icons.add_circle_rounded,
+            //     size: _height * 0.06,
+            //     color: Colors.orange,
+            //   ),
+            // ),
             BottomNavigationBarItem(
               activeIcon: Icon(
                 Icons.account_circle,
@@ -64,7 +65,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 color: Colors.blue,
               ),
               label: '',
-              icon: Icon(
+              icon: const Icon(
                 Icons.account_circle,
                 size: 25,
                 color: Colors.white,

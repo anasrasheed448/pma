@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pma/constraits&style/text_constant.dart';
+import 'package:pma/screens/detail_Screen.dart';
 import 'package:pma/widgets/bottom_bar.dart';
 import 'package:pma/widgets/custom_dashboard_card.dart';
+import 'package:pma/widgets/dropdown.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({Key? key}) : super(key: key);
@@ -10,9 +13,26 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  String? value = "";
   @override
   Widget build(BuildContext context) {
+    List dropDownItem = [
+      {
+        "value1": "weekly",
+        "value2": "Monthly",
+        "value3": "Date Range",
+        "text1": "Weekly",
+        "text2": "Monthly",
+        "text3": "Date Range"
+      },
+      {
+        "value1": "Option1",
+        "value2": "Option2",
+        "value3": "Option3",
+        "text1": "Option1",
+        "text2": "Option2",
+        "text3": "Option3"
+      },
+    ];
     List widgetItems = [
       {
         "name": "Pesonal",
@@ -79,84 +99,34 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Board",
-                    style: TextStyle(
-                        color: Colors.blue[900],
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  const Icon(Icons.person),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 10.0,
-                ),
-                child: Container(
-                  height: size.height * 0.07,
-                  color: Colors.grey.shade300,
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      canvasColor: Colors.grey.shade300,
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        elevation: 0,
-                        isExpanded: true,
-                        hint: Center(
-                          child: Text(
-                            value == "" ? "Sort By" : value.toString(),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       "Board",
+              //       style: TextStyle(
+              //           color: Colors.blue[900],
+              //           fontWeight: FontWeight.bold,
+              //           fontSize: 20),
+              //     ),
+              //     const Icon(Icons.person),
+              //   ],
+              // ),
+              SizedBox(
+                height: size.height * 0.17,
+                child: Column(
+                    children: dropDownItem
+                        .map(
+                          (e) => CustomDropdown(
+                            value1: e["value1"],
+                            value2: e["value2"],
+                            value3: e["value3"],
+                            txt1: e["text1"],
+                            txt2: e["text2"],
+                            txt3: e["text3"],
                           ),
-                        ),
-                        onChanged: (_value) {
-                          setState(() {
-                            value = _value;
-                          });
-                        },
-                        items: const [
-                          DropdownMenuItem<String>(
-                            value: "Daily",
-                            child: Center(
-                              child: Text(
-                                "Daily",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: "Weekly",
-                            child: Center(
-                              child: Text(
-                                "Weekly",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: "Date Range",
-                            child: Center(
-                              child: Text(
-                                "Date Range",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                        )
+                        .toList()),
               ),
               Flexible(
                 child: GridView.builder(
@@ -173,7 +143,47 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           iconColor: widgetItems[i]["color"]);
                     }),
               ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              Container(
+                color: Colors.orangeAccent,
+                // margin: EdgeInsets.all(10),
+                width: size.width * 0.40,
+                height: size.height * 0.07,
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Text(
+                        "See More",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Icon(
+                        Icons.remove_red_eye,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
             ],
+
             // ),
           )),
     );
